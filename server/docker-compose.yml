@@ -1,0 +1,30 @@
+version:  '3'
+services:
+  document-server:
+     image: "joequant/document-server"
+     build:
+       context: .
+       dockerfile: Dockerfile
+       args:
+         base: mageia:7
+     volumes:
+       - user:/home/user
+     command: /home/user/data/startup.sh
+     environment:
+       - IPFS_PATH=/home/user/data/jsipfs
+       - IPFS_URI=/ip4/127.0.0.1/tcp/5002
+     ports:
+       - 8545:8545
+       - 4000:4000
+       - 5002:5002
+       - 3000:3000
+     user: user
+     stdin_open: true
+     tty: true
+volumes:
+  user:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: $HOME/user

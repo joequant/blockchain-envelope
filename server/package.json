@@ -1,0 +1,19 @@
+{
+  "name": "graphql-server",
+  "version": "0.0.1",
+  "description": "GraphQL server for document server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "LGPL-3.0-or-later",
+  "dependencies": {
+    "apollo-server": "^2.9.13",
+    "child_process": "^1.0.2",
+    "graphql": "^14.5.8",
+    "util": "^0.12.1",
+    "nodegit": "^0.26.2"
+
+  }
+}
