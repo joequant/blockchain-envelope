@@ -25,14 +25,14 @@ cd ~user
 mkdir code
 pushd code
 
-git clone https://github.com/joequant/tea -depth=1
+git clone https://github.com/joequant/tea --depth=1
 pushd tea
 go build
-mv bin/tea /usr/bin
+mv tea /usr/bin
 popd
 rm -rf tea
 
-git clone https://github.com/joequant/gitea -depth=1
+git clone https://github.com/joequant/gitea --depth=1
 pushd gitea
 for i in options public templates; do 
    pushd modules/$i
@@ -44,7 +44,7 @@ mv gitea /usr/bin
 popd
 rm -rf gitea
 
-git clone https://github.com/git-lfs/git-lfs -depth=1
+git clone https://github.com/git-lfs/git-lfs --depth=1
 pushd git-lfs
 make
 mv bin/git-lfs /usr/bin
@@ -53,7 +53,7 @@ popd
 git lfs install
 rm -rf git-lfs
 
-git clone https://github.com/joequant/git-lfs-ipfs -depth=1
+git clone https://github.com/joequant/git-lfs-ipfs --depth=1
 pushd git-lfs-ipfs/git-lfs-ipfs-cli
 cargo build --release
 popd
