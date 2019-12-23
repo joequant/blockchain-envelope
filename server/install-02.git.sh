@@ -49,7 +49,6 @@ pushd git-lfs
 make
 mv bin/git-lfs /usr/bin
 popd
-popd
 git lfs install
 rm -rf git-lfs
 
@@ -65,7 +64,7 @@ mv build/bin/geth /usr/bin
 popd
 rm -rf go-ethereum
 
-git clone https://github.com/joequant/mango-admin.git -b dev/work
+git clone https://github.com/joequant/mango-admin.git -b dev/work --depth=1
 pushd mango-admin
 npm install -g --production
 pushd /usr/lib/node_modules
@@ -73,7 +72,7 @@ modclean -r -f
 popd
 popd
 
-git clone https://github.com/joequant/git-remote-mango.git
+git clone https://github.com/joequant/git-remote-mango.git --depth=1
 pushd git-remote-mango
 npm install --verbose --production
 pushd node_modules
