@@ -2,6 +2,11 @@
 import apolloServer from 'apollo-server';
 const { ApolloServer, gql } = apolloServer;
 
+import util from 'util';
+import childProcess from 'child_process';
+
+const exec = util.promisify(childProcess.exec);
+
 // Construct a schema, using GraphQL schema language
 const typeDefs = gql`
   type Query {
@@ -17,6 +22,7 @@ const typeDefs = gql`
 
   type Mutation {
     singleUpload(file: Upload!): File!
+    testServer: String!
   }  
 `;
 
@@ -41,6 +47,11 @@ Mutation: {
       // const id = await recordFile( … )
 
       return { filename, mimetype, encoding };
+    },
+
+    async testServer() {
+      const { stdout, stderr } = await exec('/home/user/data/test-system.sh')
+      return stdout;
     }
 }
 };
