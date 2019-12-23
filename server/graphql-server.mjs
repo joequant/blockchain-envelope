@@ -4,6 +4,7 @@ const { ApolloServer, gql } = apolloServer;
 
 import util from 'util';
 import childProcess from 'child_process';
+import simpleGit from 'simple-git'
 
 const exec = util.promisify(childProcess.exec);
 
@@ -23,6 +24,7 @@ const typeDefs = gql`
   type Mutation {
     singleUpload(file: Upload!): File!
     testServer: String!
+    gitClone(repoString: String!): String!
   }  
 `;
 
@@ -52,6 +54,10 @@ Mutation: {
     async testServer() {
       const { stdout, stderr } = await exec('/home/user/data/test-system.sh')
       return stdout;
+    },
+    async gitClone(parent, {repoString}) {
+      simpleGit('../repo').clone(repoString)
+      return repoString
     }
 }
 };
