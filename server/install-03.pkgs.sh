@@ -20,7 +20,7 @@ mkdir repo
 pushd code
 git clone https://github.com/joequant/blockchain-envelope --depth=1
 pushd blockchain-envelope/server
-npm install -g --unsafe-perm=true --allow-root --verbose
+yarn install --production=true
 pushd node_modules
 modclean -r -f
 popd
@@ -30,8 +30,7 @@ geth --datadir /home/user/data/geth \
      init /home/user/code/blockchain-envelope/server/CustomGenesis.json
 
 pushd data
-npm install -g --unsafe-perm=true --allow-root --verbose ganache-cli \
-    truffle ipfs
+yarn global add truffle ipfs
 pushd /usr/lib/node_modules
 modclean -r -f
 popd
