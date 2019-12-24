@@ -52,11 +52,11 @@ Mutation: {
     },
 
     async testServer() {
-      const { stdout, stderr } = await exec('/home/user/data/test-system.sh')
+      const { stdout, stderr } = await exec('./test-system.sh')
       return stdout;
     },
     async gitClone(parent, {repoString}) {
-      simpleGit('../repo').clone(repoString)
+      simpleGit('/home/user/repo').clone(repoString)
       return repoString
     }
 }
