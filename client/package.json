@@ -1,0 +1,37 @@
+{
+  "name": "client",
+  "version": "0.01",
+  "dependencies": {
+    "@apollo/react-hooks": "3.0.0",
+    "@reach/router": "^1.2.1",
+    "apollo-cache-inmemory": "^1.6.2",
+    "apollo-client": "^2.6.3",
+    "apollo-link-http": "^1.5.15",
+    "emotion": "^9.2.12",
+    "graphql": "^14.4.2",
+    "graphql-tag": "^2.10.1",
+    "polished": "^3.4.1",
+    "react": "^16.9.0-alpha.0",
+    "react-dom": "^16.9.0-alpha.0",
+    "react-emotion": "^9.2.12",
+    "react-scripts": "3.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
