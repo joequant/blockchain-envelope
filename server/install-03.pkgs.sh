@@ -17,24 +17,22 @@ mkdir data/logs
 mkdir data/ganache
 mkdir repo
 
-cp /tmp/startup.sh /home/user/data
-cp /tmp/CustomGenesis.json /home/user/data
-cp /tmp/test-system.sh /home/user/data
-
-chmod a+x /home/user/data/startup.sh
-geth --datadir /home/user/data/geth \
-     init /home/user/data/CustomGenesis.json
-
-cp /tmp/graphql-server.mjs /home/user/data
-cp /tmp/package.json /home/user/data
-pushd data
+pushd code
+git clone https://github.com/joequant/blockchain-envelope --depth=1
+pushd blockchain-envelope/server
 npm install -g --unsafe-perm=true --allow-root --verbose
+pushd node_modules
+modclean -r -f
+popd
+popd
+popd
+geth --datadir /home/user/data/geth \
+     init /home/user/code/blockchain-envelope/server/CustomGenesis.json
+
+pushd data
 npm install -g --unsafe-perm=true --allow-root --verbose ganache-cli \
     truffle ipfs
 pushd /usr/lib/node_modules
-modclean -r -f
-popd
-pushd node_modules
 modclean -r -f
 popd
 jsipfs init
@@ -48,7 +46,6 @@ EOF
 
 #: '
 # Gitea install
-cp /tmp/gitea.ini /home/user/data
 pushd /usr/local/bin
 curl https://dl.gitea.io/gitea/1.10.1/gitea-1.10.1-linux-amd64 > gitea
 chmod +x gitea

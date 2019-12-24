@@ -9,7 +9,5 @@ WORKDIR /
 COPY --from=0 / .
 COPY install-02.git.sh proxy.sh /tmp/
 RUN source /tmp/install-02.git.sh ; rm /tmp/*.sh
-COPY install-03.pkgs.sh proxy.sh startup.sh CustomGenesis.json \
-     test-system.sh gitea.ini \
-     graphql-server.mjs package.json /tmp/
+COPY install-03.pkgs.sh proxy.sh /tmp/
 RUN source /tmp/install-03.pkgs.sh ; rm /tmp/*.sh
