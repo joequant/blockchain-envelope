@@ -18,31 +18,29 @@ mkdir data/ganache
 mkdir repo
 
 pushd code
-git clone https://github.com/joequant/blockchain-envelope --depth=1
-pushd blockchain-envelope
-
-pushd server
-yarn install --production=true
-pushd node_modules
-modclean -r -f
-popd
-popd
-
-pushd client
-yarn install --production=true
-yarn build
-pushd node_modules
-modclean -r -f
-popd
-popd
-
-popd
-popd
+  git clone https://github.com/joequant/blockchain-envelope --depth=1
+  pushd blockchain-envelope
+    pushd server
+      pnpm install -g
+      pushd /usr/lib/node_modules
+        modclean -r -f
+      popd
+    popd
+    pushd client
+      pnpm install
+      pnpm run build
+      pushd /usr/lib/node_modules
+        modclean -r -f
+      popd
+    popd
+  popd
+popd    
 geth --datadir /home/user/data/geth \
      init /home/user/code/blockchain-envelope/server/CustomGenesis.json
 
 pushd data
-yarn global add ganache ipfs
+
+pnpm install -g ganache-cli ipfs
 pushd /usr/lib/node_modules
 modclean -r -f
 popd
@@ -57,11 +55,6 @@ EOF
 
 #: '
 # Gitea install
-pushd /usr/local/bin
-curl https://dl.gitea.io/gitea/1.10.1/gitea-1.10.1-linux-amd64 > gitea
-chmod +x gitea
-popd
-
 mkdir -p /var/lib/gitea/{custom,data,log}
 chown -R user:user /var/lib/gitea/
 chmod -R 750 /var/lib/gitea/

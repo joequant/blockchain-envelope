@@ -13,10 +13,14 @@ else
 			 --mnemonic="myth like bonus scare over problem client lizard pioneer submit female collect" \
 			 >> data/logs/ganache.log 2>&1 &
 fi
-node --experimental-modules $HOME/code/blockchain-envelope/server/graphql-server.mjs >> data/logs/graphql-server.log 2>&1 &
 
-pushd $HOME/code/blockchain-envelope/client
-yarn start
+pushd code/blockchain-envelope
+pushd server
+node --experimental-modules $HOME/code/blockchain-envelope/server/graphql-server.mjs >> data/logs/graphql-server.log 2>&1 &
+popd
+pushd client
+pnpm run start &
+popd
 popd
 
 if [[ -n "$IPFS_URI" ]]; then

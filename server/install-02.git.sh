@@ -4,7 +4,7 @@
 set -e -v
 
 source /tmp/proxy.sh
-
+export HOME=/home/user
 echo "ZONE=UTC" > /etc/sysconfig/clock
 export TZ="UTC"
 useradd user
@@ -20,9 +20,10 @@ if [[ ! -z "$http_proxy" ]] ; then
     git config --global http.sslVerify false
 fi
 
-npm install --global --unsafe-perm=true --verbose yarn
-yarn config set prefix /usr
-yarn global add modclean
+npm install -g --unsafe-perm=true --allow-root --verbose --production pnpm
+pnpm install -g --production modclean
+pnpm config set prefix /usr
+
 cd ~user
 mkdir code
 pushd code
@@ -68,7 +69,7 @@ rm -rf go-ethereum
 
 git clone https://github.com/joequant/mango-admin.git -b dev/work --depth=1
 pushd mango-admin
-yarn install --production=true
+pnpm install -g --production
 pushd /usr/lib/node_modules
 modclean -r -f
 popd
@@ -76,8 +77,8 @@ popd
 
 git clone https://github.com/joequant/git-remote-mango.git --depth=1
 pushd git-remote-mango
-yarn install --production=true
-pushd node_modules
+pnpm install -g --production
+pushd /usr/lib/node_modules
 modclean -r -f
 popd
 pushd /usr/bin
