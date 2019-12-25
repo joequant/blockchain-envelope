@@ -8,7 +8,7 @@
     "docker-start": "docker-compose up document-server &",
     "docker-stop": "docker-compose stop document-server",
     "shell": "../tools/docker/shell-server.sh document-server",
-    "clean-vols": "../tools/docker/clean-vols.sh document-server document_server_user",
+    "clean-vols": "../tools/docker/clean-vols.sh document-server server_user",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

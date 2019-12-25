@@ -21,15 +21,15 @@ pushd code
   git clone https://github.com/joequant/blockchain-envelope --depth=1
   pushd blockchain-envelope
     pushd server
-      pnpm install -g
-      pushd /usr/lib/node_modules
+      pnpm install
+      pushd node_modules
         modclean -r -f
       popd
     popd
     pushd client
       pnpm install
       pnpm run build
-      pushd /usr/lib/node_modules
+      pushd node_modules
         modclean -r -f
       popd
     popd
