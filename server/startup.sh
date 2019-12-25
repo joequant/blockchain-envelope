@@ -16,7 +16,7 @@ fi
 
 pushd code/blockchain-envelope
 pushd server
-node --experimental-modules $HOME/code/blockchain-envelope/server/graphql-server.mjs >> data/logs/graphql-server.log 2>&1 &
+node --experimental-modules ./graphql-server.mjs >> $HOME/data/logs/graphql-server.log 2>&1 &
 popd
 pushd client
 pnpm run start &
