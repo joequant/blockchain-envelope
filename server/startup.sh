@@ -15,6 +15,10 @@ else
 fi
 node --experimental-modules $HOME/code/blockchain-envelope/server/graphql-server.mjs >> data/logs/graphql-server.log 2>&1 &
 
+pushd $HOME/code/blockchain-envelope/client
+yarn start
+popd
+
 if [[ -n "$IPFS_URI" ]]; then
     /usr/bin/jsipfs daemon >> data/logs/ipfs.log 2>&1 &
 fi

@@ -19,18 +19,30 @@ mkdir repo
 
 pushd code
 git clone https://github.com/joequant/blockchain-envelope --depth=1
-pushd blockchain-envelope/server
+pushd blockchain-envelope
+
+pushd server
 yarn install --production=true
 pushd node_modules
 modclean -r -f
 popd
+popd
+
+pushd client
+yarn install --production=true
+yarn build
+pushd node_modules
+modclean -r -f
+popd
+popd
+
 popd
 popd
 geth --datadir /home/user/data/geth \
      init /home/user/code/blockchain-envelope/server/CustomGenesis.json
 
 pushd data
-yarn global add truffle ipfs
+yarn global add ganache ipfs
 pushd /usr/lib/node_modules
 modclean -r -f
 popd
