@@ -21,14 +21,14 @@ pushd code
   git clone https://github.com/joequant/blockchain-envelope --depth=1
   pushd blockchain-envelope
     pushd server
-      pnpm install
-      pushd node_modules
+      npm install -g --unsafe-perm=true --allow-root --verbose --production
+      pushd /usr/lib/node_modules
         modclean -r -f
       popd
     popd
     pushd client
-      pnpm install
-      pnpm run build
+      npm install -g --unsafe-perm=true --allow-root --verbose --production
+      npm run build
       pushd node_modules
         modclean -r -f
       popd
@@ -40,18 +40,13 @@ geth --datadir /home/user/data/geth \
 
 pushd data
 
-pnpm install -g ganache-cli ipfs
+npm install -g --unsafe-perm=true --allow-root --verbose --production \
+    ganache-cli ipfs
 pushd /usr/lib/node_modules
 modclean -r -f
 popd
 jsipfs init
 popd
-
-usermod -aG wheel user
-chown -R user:user /home/user
-cat <<EOF >> /etc/sudoers
-%wheel        ALL=(ALL)       NOPASSWD: ALL
-EOF
 
 #: '
 # Gitea install
@@ -59,6 +54,12 @@ mkdir -p /var/lib/gitea/{custom,data,log}
 chown -R user:user /var/lib/gitea/
 chmod -R 750 /var/lib/gitea/
 #:'
+
+usermod -aG wheel user
+chown -R user:user /home/user
+cat <<EOF >> /etc/sudoers
+%wheel        ALL=(ALL)       NOPASSWD: ALL
+EOF
 
 : '
 # Gogs install
