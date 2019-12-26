@@ -19,7 +19,7 @@ pushd server
 node --experimental-modules ./graphql-server.mjs >> $HOME/data/logs/graphql-server.log 2>&1 &
 popd
 pushd client
-pnpm run start &
+npm run start &
 popd
 popd
 

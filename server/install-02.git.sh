@@ -20,9 +20,7 @@ if [[ ! -z "$http_proxy" ]] ; then
     git config --global http.sslVerify false
 fi
 
-npm install -g --unsafe-perm=true --allow-root --verbose --production pnpm
-pnpm install -g --production modclean
-pnpm config set prefix /usr
+npm install -g modclean
 
 cd ~user
 mkdir code
@@ -69,7 +67,7 @@ rm -rf go-ethereum
 
 git clone https://github.com/joequant/mango-admin.git -b dev/work --depth=1
 pushd mango-admin
-pnpm install -g --production
+npm install -g --unsafe-perm=true --allow-root --verbose --production
 pushd /usr/lib/node_modules
 modclean -r -f
 popd
@@ -77,12 +75,9 @@ popd
 
 git clone https://github.com/joequant/git-remote-mango.git --depth=1
 pushd git-remote-mango
-pnpm install -g --production
+npm install -g --unsafe-perm=true --allow-root --verbose --production
 pushd /usr/lib/node_modules
 modclean -r -f
-popd
-pushd /usr/bin
-ln -s ../../home/user/code/git-remote-mango/git-remote-mango .
 popd
 
 #pushd go-ipfs
