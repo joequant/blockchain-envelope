@@ -40,7 +40,8 @@ geth --datadir /home/user/data/geth \
 
 pushd data
 
-pnpm install -g ganache-cli ipfs
+pnpm install -g ganache-cli
+pnpm install -g ipfs
 pushd /usr/lib/node_modules
 modclean -r -f
 popd
