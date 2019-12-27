@@ -20,7 +20,12 @@ if [[ ! -z "$http_proxy" ]] ; then
     git config --global http.sslVerify false
 fi
 
-npm install -g modclean
+npm install -g --unsafe-perm=true --allow-root --verbose --production pnpm 
+pnpm config set prefix /usr/local
+pnpm config set pnpm-prefix /usr/local
+pnpm config set store-dir /var/cache/pnpm-store
+
+pnpm install -g modclean
 
 cd ~user
 mkdir code
@@ -61,23 +66,29 @@ popd
 git clone https://github.com/ethereum/go-ethereum.git --depth=1
 pushd go-ethereum
 make geth
-mv build/bin/geth /usr/bin
+mv build/bin/geth /usr/local/bin
 popd
 rm -rf go-ethereum
 
 git clone https://github.com/joequant/mango-admin.git -b dev/work --depth=1
 pushd mango-admin
-npm install -g --unsafe-perm=true --allow-root --verbose --production
-pushd /usr/lib/node_modules
-modclean -r -f
+pnpm install
+pushd node_modules
+  modclean -r -f
+popd
+pushd /usr/local/bin
+ln -s ../../../home/user/code/mango-admin/mango-admin .
 popd
 popd
 
 git clone https://github.com/joequant/git-remote-mango.git --depth=1
 pushd git-remote-mango
-npm install -g --unsafe-perm=true --allow-root --verbose --production
-pushd /usr/lib/node_modules
-modclean -r -f
+pnpm install
+pushd node_modules
+  modclean -r -f
+popd
+pushd /usr/local/bin
+ln -s ../../../home/user/code/git-remote-mango/git-remote-mango .
 popd
 
 #pushd go-ipfs
