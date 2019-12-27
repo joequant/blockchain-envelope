@@ -3,11 +3,11 @@ export GITEA_WORK_DIR=/var/lib/gitea/
 pushd $HOME
 BLOCK=${BLOCK:-ganache}
 if [[ $BLOCK = "geth" ]] ; then
-    /usr/bin/geth --datadir $HOME/data/geth \
+    geth --datadir $HOME/data/geth \
 		  --networkid 15 --rpc >> \
 		  data/logs/geth.log 2>&1 &
 else
-    /usr/bin/ganache-cli --db $HOME/data/ganache \
+    ganache-cli --db $HOME/data/ganache \
 			 -i="5777" \
 			 -d \
 			 --mnemonic="myth like bonus scare over problem client lizard pioneer submit female collect" \
