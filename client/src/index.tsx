@@ -11,6 +11,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import TabPanel from './tab-panel';
 import Button from '@material-ui/core/Button';
+import Emoji from './emoji';
 
 const cache = new InMemoryCache();
 const link = new HttpLink({
@@ -57,7 +58,7 @@ export default function SimpleTabs() {
        <TabPanel value={value} index={0}>
            <ApolloProvider client={client}>
            <div>
-              <h2>My first Apollo app 🚀</h2>
+              <h2>My first Apollo app <Emoji symbol="🚀"/></h2>
            </div>
            </ApolloProvider>
       </TabPanel>
