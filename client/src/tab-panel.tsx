@@ -3,7 +3,7 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
 type TabPanelProps = {
-  children: any,
+  children: React.ReactNode,
   index: any,
   value: any
 };

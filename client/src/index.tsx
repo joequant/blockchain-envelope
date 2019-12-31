@@ -34,11 +34,12 @@ function a11yProps(index : any) {
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
+    textTransform: 'none',
     backgroundColor: theme.palette.background.paper,
   },
 }));
 
-export default function SimpleTabs() {
+export const SimpleTabs = (props: any) => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
