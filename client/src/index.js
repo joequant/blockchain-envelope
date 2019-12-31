@@ -10,8 +10,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import TabPanel from './tab-panel';
-
-
+import Button from '@material-ui/core/Button';
 
 const cache = new InMemoryCache();
 const link = new HttpLink({
@@ -63,7 +62,9 @@ export default function SimpleTabs() {
            </ApolloProvider>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+	  <Button variant="contained" color="primary">
+	  Hello World
+          </Button>
       </TabPanel>
       <TabPanel value={value} index={2}>
         Item Three
