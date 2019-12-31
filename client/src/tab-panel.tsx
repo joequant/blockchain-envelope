@@ -1,10 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
+type TabPanelProps = {
+  children: any,
+  index: any,
+  value: any
+};
 
-export default class TabPanel extends React.Component {
+export default class TabPanel extends React.Component<TabPanelProps> {
     render() {
   const { children, value, index, ...other } = this.props;
 
@@ -23,8 +27,3 @@ export default class TabPanel extends React.Component {
     }
 }
 
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired,
-};

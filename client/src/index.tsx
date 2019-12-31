@@ -23,7 +23,7 @@ const client = new ApolloClient({
 });
 
 
-function a11yProps(index) {
+function a11yProps(index : any) {
   return {
     id: `simple-tab-${index}`,
     'aria-controls': `simple-tabpanel-${index}`,
@@ -41,7 +41,7 @@ export default function SimpleTabs() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
-  const handleChange = (event, newValue) => {
+  const handleChange = (event : any, newValue : any) => {
     setValue(newValue);
   };
 
