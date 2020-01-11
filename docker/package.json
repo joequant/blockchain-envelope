@@ -1,0 +1,10 @@
+{
+    "name": "blockchain-envelope",
+    "scripts": {
+	"build": "docker-compose build",
+	"start": "docker-compose up blockchain-envelope &",
+	"stop": "docker-compose stop blockchain-envelope",
+	"shell": "../tools/docker/shell-server.sh blockchain-envelope",
+	"clean-vols": "../tools/docker/clean-vols.sh blockchain-envelope server_user"
+    }
+}

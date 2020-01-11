@@ -30,5 +30,3 @@ urpmi --no-recommends --excludedocs --auto \
     gnupg2 \
     cargo \
     pam-devel
-
-
