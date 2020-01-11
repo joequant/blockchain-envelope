@@ -5,6 +5,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { ApolloProvider } from '@apollo/react-hooks';
 
+import { ThemeProvider, createMuiTheme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
@@ -39,6 +40,16 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+const theme = createMuiTheme({
+    overrides: {
+	MuiTab: {
+	    root: {
+		textTransform: 'none'
+	    },
+	},
+    }
+});
+
 export const SimpleTabs = (props: any) => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
@@ -48,7 +59,8 @@ export const SimpleTabs = (props: any) => {
   };
 
   return (
-    <div className={classes.root}>
+ <div className={classes.root}>
+    <ThemeProvider theme={theme}>
       <AppBar position="static">
         <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
           <Tab label="Apollo item" {...a11yProps(0)} />
@@ -71,7 +83,8 @@ export const SimpleTabs = (props: any) => {
       <TabPanel value={value} index={2}>
         Item Three
       </TabPanel>
-    </div>
+    </ThemeProvider>
+ </div>
   );
 }
 
