@@ -27,6 +27,6 @@ if [[ -n "$IPFS_URI" ]]; then
     jsipfs daemon >> data/logs/ipfs.log 2>&1 &
 fi
 
-gitea web  -c $HOME/code/blockchain-envelope/server/gitea.ini >> data/logs/gitea.log &
+gitea web  -c $HOME/code/blockchain-envelope/docker/gitea.ini >> data/logs/gitea.log &
 exec /bin/bash
 popd

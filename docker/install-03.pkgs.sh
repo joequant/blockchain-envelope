@@ -36,7 +36,7 @@ pushd code
   popd
 popd    
 geth --datadir /home/user/data/geth \
-     init /home/user/code/blockchain-envelope/server/CustomGenesis.json
+     init /home/user/code/blockchain-envelope/docker/CustomGenesis.json
 
 pushd data
 
