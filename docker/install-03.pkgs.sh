@@ -16,22 +16,18 @@ mkdir data
 mkdir data/logs
 mkdir data/ganache
 mkdir repo
+pnpm install -g react-scripts
 
 pushd code
   git clone https://github.com/joequant/blockchain-envelope --depth=1
   pushd blockchain-envelope
     pushd server
-      pnpm install
-      pushd node_modules
-        modclean -r -f
-      popd
+      pnpm install -g
     popd
     pushd client
-      pnpm install
+      pnpm install typescript
+      pnpm install -g
       pnpm run build
-      pushd node_modules
-        modclean -r -f
-      popd
     popd
   popd
 popd    
@@ -42,6 +38,7 @@ pushd data
 
 pnpm install -g ganache-cli
 pnpm install -g ipfs
+pnpm store prune
 pushd /usr/lib/node_modules
 modclean -r -f
 popd
